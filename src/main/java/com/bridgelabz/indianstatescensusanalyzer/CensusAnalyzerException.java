@@ -4,7 +4,8 @@ public class CensusAnalyzerException extends RuntimeException {
 	enum ExceptionType{
 		CENSUS_FILE_PROBLEM,
 		UNABLE_TO_PARSE,
-		CENSUS_INCORRECT_FILE_FORMAT
+		CENSUS_INCORRECT_FILE_FORMAT,
+		WRONG_FILE_PATH
 	}
 
 	ExceptionType type;

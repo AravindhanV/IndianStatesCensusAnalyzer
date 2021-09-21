@@ -16,4 +16,15 @@ public class IndianStatesCensusAnalyzerTest {
 		int noOfLines = analyzer.loadIndiaCensusData("data.csv");
 		assertEquals(2, noOfLines);
 	}
+	
+	@Test 
+	public void loadIndiaCensusData_givenWrongPath_returnsCorrectNumberRecords() {
+    	try {
+            StateCensusAnalyzer censusAnalyzer = new StateCensusAnalyzer();
+            int numOfRecords = censusAnalyzer.loadIndiaCensusData("abc.csv");
+
+        } catch (CensusAnalyzerException e) {
+        	assertEquals(CensusAnalyzerException.ExceptionType.WRONG_FILE_PATH, e.type);
+        }
+    }
 }
