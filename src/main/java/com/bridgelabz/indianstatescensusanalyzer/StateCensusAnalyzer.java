@@ -9,12 +9,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Iterator;
 
+import com.bridgelabz.indianstatescensusanalyzer.CensusAnalyzerException.ExceptionType;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 public class StateCensusAnalyzer {
 	
-	public int loadIndiaCensusData(String csvFilePath) {
+	public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyzerException{
 
 		int numberOfEntries = 0;
 		try {
@@ -31,7 +32,9 @@ public class StateCensusAnalyzer {
     		}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new CensusAnalyzerException(e.getMessage(), ExceptionType.CENSUS_FILE_PROBLEM);
+		} catch(IllegalStateException e) {
+			throw new CensusAnalyzerException(e.getMessage(),ExceptionType.CENSUS_INCORRECT_FILE_FORMAT);
 		}
 		return numberOfEntries;
 	}
