@@ -5,7 +5,7 @@ package com.bridgelabz.indianstatescensusanalyzer;
 
 import org.junit.Test;
 
-import com.bridgelabz.indianstatescensusanalyzer.IndianStatesCensusAnalyzer;
+import com.bridgelabz.indianstatescensusanalyzer.StateCensusAnalyzer;
 
 import static org.junit.Assert.*;
 

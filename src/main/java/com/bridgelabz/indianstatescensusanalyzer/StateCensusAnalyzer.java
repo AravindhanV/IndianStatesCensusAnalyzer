@@ -3,5 +3,5 @@
  */
 package com.bridgelabz.indianstatescensusanalyzer;
 
-public class IndianStatesCensusAnalyzer {
+public class StateCensusAnalyzer {
 }
