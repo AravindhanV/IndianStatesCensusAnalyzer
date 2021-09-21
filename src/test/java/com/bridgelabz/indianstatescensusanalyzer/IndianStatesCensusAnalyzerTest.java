@@ -10,4 +10,10 @@ import com.bridgelabz.indianstatescensusanalyzer.StateCensusAnalyzer;
 import static org.junit.Assert.*;
 
 public class IndianStatesCensusAnalyzerTest {
+	@Test
+	public void loadIndiaCensusData_ValidCSVInput_NumberOfRows() {
+		StateCensusAnalyzer analyzer = new StateCensusAnalyzer();
+		int noOfLines = analyzer.loadIndiaCensusData("data.csv");
+		assertEquals(2, noOfLines);
+	}
 }
