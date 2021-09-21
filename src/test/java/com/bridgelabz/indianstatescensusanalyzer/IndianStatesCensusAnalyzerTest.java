@@ -30,7 +30,7 @@ public class IndianStatesCensusAnalyzerTest {
     }
 	
 	 @Test
-	    public void givenIndianCensusCSVFile_WhenCorrectPathButWrongFileFormat_ShouldThrowException() {
+	    public void loadIndiaCensusData_GivenWrongFileFormat_ShouldThrowException() {
 			
 			try {
 				StateCensusAnalyzer censusAnalyzer = new StateCensusAnalyzer();
@@ -42,4 +42,11 @@ public class IndianStatesCensusAnalyzerTest {
 				assertEquals(CensusAnalyzerException.ExceptionType.CSV_FILE_INTERNAL_ISSUES, e.type);
 			}
 	    }
+	 
+	 @Test
+	 public void loadIndiaStateCode_ValidCSVInput_ReturnsNumberOfRows() {
+		 StateCensusAnalyzer analyzer = new StateCensusAnalyzer();
+			int noOfLines = analyzer.loadIndiaStateCode("codes.csv");
+			assertEquals(2, noOfLines);
+	 }
 }
