@@ -24,7 +24,7 @@ public class IndianStatesCensusAnalyzerTest {
             int numOfRecords = censusAnalyzer.loadIndiaCensusData("abc.csv");
 
         } catch (CensusAnalyzerException e) {
-        	assertEquals(CensusAnalyzerException.ExceptionType.WRONG_FILE_PATH, e.type);
+        	assertEquals(CensusAnalyzerException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
         }
     }
 }

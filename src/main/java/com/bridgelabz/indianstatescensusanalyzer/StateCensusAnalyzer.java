@@ -28,13 +28,13 @@ public class StateCensusAnalyzer {
 
     		while(censusCSVIterator.hasNext()) {
     			numberOfEntries++;
-    			CSVStateCensus censusData = censusCSVIterator.next();
+    			censusCSVIterator.next();
     		}
 
 		} catch (IOException e) {
 			throw new CensusAnalyzerException(e.getMessage(), ExceptionType.CENSUS_FILE_PROBLEM);
 		} catch(IllegalStateException e) {
-			throw new CensusAnalyzerException(e.getMessage(),ExceptionType.CENSUS_INCORRECT_FILE_FORMAT);
+			throw new CensusAnalyzerException(e.getMessage(),ExceptionType.UNABLE_TO_PARSE);
 		}
 		return numberOfEntries;
 	}
