@@ -11,6 +11,11 @@ import com.bridgelabz.indianstatescensusanalyzer.StateCensusAnalyzer;
 import static org.junit.Assert.*;
 
 public class IndianStatesCensusAnalyzerTest {
+	private static final String INDIA_CENSUS_CSV_FILE_PATH = "./src/test/resources/IndianStateCensus.csv";
+	private static final String CSV_WRONG_FILE_PATH="./IndianStateCensus.csv";
+	private static final String INCORRECT_FILE_FORMAT = "./src/test/resources/CensusDataWrongType.txt";
+	private static final String CSV_CENSUS_WRONG_DELIMITER = "./src/test/resources/IndianCensusWrongDelimiter.csv";
+	private static final String CSV_CENSUS_WRONG_HEADER = "./src/test/resources/CsvFileWrongHeader.csv";
 	private static final String STATE_CSV_FILE_PATH = "./src/test/resources/IndianStateCodes.csv";
 	private static final String STATE_CSV_FILE_WRONG_PATH = "./IndianStateCodes.csv";
 	
