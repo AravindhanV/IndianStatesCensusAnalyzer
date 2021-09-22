@@ -5,5 +5,5 @@
 build
 bin/
 .settings/
-.classpth
+.classpath
 .project
