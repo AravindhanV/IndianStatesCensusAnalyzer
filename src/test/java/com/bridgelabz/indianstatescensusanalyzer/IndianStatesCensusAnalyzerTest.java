@@ -11,6 +11,9 @@ import com.bridgelabz.indianstatescensusanalyzer.StateCensusAnalyzer;
 import static org.junit.Assert.*;
 
 public class IndianStatesCensusAnalyzerTest {
+	private static final String STATE_CSV_FILE_PATH = "./src/test/resources/IndianStateCodes.csv";
+	private static final String STATE_CSV_FILE_WRONG_PATH = "./IndianStateCodes.csv";
+	
 	@Test
 	public void loadIndiaCensusData_ValidCSVInput_NumberOfRows() {
 		StateCensusAnalyzer analyzer = new StateCensusAnalyzer();
