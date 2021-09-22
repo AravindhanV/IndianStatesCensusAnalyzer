@@ -22,39 +22,28 @@ public class IndianStatesCensusAnalyzerTest {
 	@Test
 	public void loadIndiaCensusData_ValidCSVInput_NumberOfRows() {
 		StateCensusAnalyzer analyzer = new StateCensusAnalyzer();
-		int noOfLines = analyzer.loadIndiaCensusData("data.csv");
+		int noOfLines = analyzer.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
 		assertEquals(2, noOfLines);
 	}
 	
 	@Test 
-	public void loadIndiaCensusData_givenWrongPath_returnsCorrectNumberRecords() {
-    	try {
-            StateCensusAnalyzer censusAnalyzer = new StateCensusAnalyzer();
-            int numOfRecords = censusAnalyzer.loadIndiaCensusData("abc.csv");
+	public void loadIndiaCensusData_givenWrongPath_ShouldThrowException() {
+		try {
+            StateCensusAnalyzer censusAnalyser = new StateCensusAnalyzer();
+            int numOfRecords = censusAnalyser.loadIndiaCensusData(CSV_WRONG_FILE_PATH);
 
         } catch (CensusAnalyzerException e) {
         	assertEquals(CensusAnalyzerException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
         }
     }
 	
-	 @Test
-	    public void loadIndiaCensusData_GivenWrongFileFormat_ShouldThrowException() {
-			
-			try {
-				StateCensusAnalyzer censusAnalyzer = new StateCensusAnalyzer();
-				ExpectedException exceptionRule = ExpectedException.none();
-				exceptionRule.expect(CensusAnalyzerException.class);
-				censusAnalyzer.loadIndiaCensusData("data.txt");
-			} 
-			catch (CensusAnalyzerException e) {
-				assertEquals(CensusAnalyzerException.ExceptionType.CSV_FILE_INTERNAL_ISSUES, e.type);
-			}
+	 @Test 
+	    public void givenIndiaCensusData_WithWrongFileType_ShouldThrowException() {
+	        try {
+	        	StateCensusAnalyzer censusAnalyser = new StateCensusAnalyzer();
+	            int numOfRecords = censusAnalyser.loadIndiaCensusData(INCORRECT_FILE_FORMAT);
+	        } catch (CensusAnalyzerException e) {
+	            assertEquals(CensusAnalyzerException.ExceptionType.CENSUS_INCORRECT_FILE_FORMAT, e.type);
+	        }
 	    }
-	 
-	 @Test
-	 public void loadIndiaStateCode_ValidCSVInput_ReturnsNumberOfRows() {
-		 StateCensusAnalyzer analyzer = new StateCensusAnalyzer();
-			int noOfLines = analyzer.loadIndiaStateCode("codes.csv");
-			assertEquals(2, noOfLines);
-	 }
 }
