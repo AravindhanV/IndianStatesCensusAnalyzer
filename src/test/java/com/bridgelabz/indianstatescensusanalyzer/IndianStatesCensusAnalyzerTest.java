@@ -18,6 +18,7 @@ public class IndianStatesCensusAnalyzerTest {
 	private static final String CSV_CENSUS_WRONG_HEADER = "./src/test/resources/CsvFileWrongHeader.csv";
 	private static final String STATE_CSV_FILE_PATH = "./src/test/resources/IndianStateCodes.csv";
 	private static final String STATE_CSV_FILE_WRONG_PATH = "./IndianStateCodes.csv";
+	private static final String STATE_CSV_WRONG_TYPE = "./src/test/resources/StateCodeWrongType.txt";
 
 	@Test
 	public void loadIndiaCensusData_ValidCSVInput_NumberOfRows() {
@@ -62,6 +63,16 @@ public class IndianStatesCensusAnalyzerTest {
 
 		} catch (CensusAnalyzerException e) {
 			assertEquals(CensusAnalyzerException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+		}
+	}
+
+	@Test
+	public void givenStatesData_WithWrongFileType_ShouldThrowException() {
+		try {
+			StateCensusAnalyzer censusAnalyser = new StateCensusAnalyzer();
+			int numOfRecords = censusAnalyser.loadIndiaStateCode(STATE_CSV_WRONG_TYPE);
+		} catch (CensusAnalyzerException e) {
+			assertEquals(CensusAnalyzerException.ExceptionType.CENSUS_INCORRECT_FILE_FORMAT, e.type);
 		}
 	}
 }
